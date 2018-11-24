@@ -34,7 +34,23 @@ def label2category(data):
         if isinstance(u[0], str):
             for i, v in enumerate(u):
                 d[v] = i
-                
+
             data[:, j] = np.vectorize(d.get)(data[:, j])
 
     return data
+
+
+def fill_intervales(data0):
+    data = np.copy(data0)
+
+    for j in range(data.shape[1]):
+        prev = -1
+        for i in range(data.shape[0]):
+            if data[i, j] != -1:
+                prev = data[i, j]
+            else:
+                data[i, j] = prev
+
+    return data
+
+
