@@ -1,1 +1,1 @@
-# litograph
+# lithograph
