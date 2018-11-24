@@ -54,3 +54,8 @@ def fill_intervales(data0):
     return data
 
 
+def scale(logs_df, tracks):
+    for col in tracks:
+        logs_df[col] = preprocessing.scale(logs_df[col])
+    return logs_df
+
