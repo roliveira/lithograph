@@ -91,7 +91,9 @@ def dataframe_model_out(data):
   scores = np.amax(scores, axis=1)/np.sum(scores, axis=1)
   
   predicted_facies_id = predicted_facies_id[0:well_length]
+  predicted_facies_id[predicted_facies_id==np.array(tag_scores).shape[1]-1] = 0
   scores = scores[0:well_length]
+  scores[scores==np.array(tag_scores).shape[1]-1] = 0
   
   return predicted_facies_id, scores
   
@@ -99,4 +101,6 @@ def dataframe_model_out(data):
 pred, scr = dataframe_model_out(pd.read_csv('https://github.com/roliveira/lithograph/raw/master/data/poseidon-0.csv'))
 
 
+
+np.sum(pred==8)
 
